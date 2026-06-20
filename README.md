@@ -1,47 +1,42 @@
-# Underground Thread Board
+# 深夜掲示板
 
-コミュニティ内で使う、2ちゃんねる風のリアルタイム掲示板です。依存パッケージなしで、Node.js 標準 `http` と Server-Sent Events だけで動きます。
+コミュニティ内で使う軽量なリアルタイム掲示板です。アングラ感は少し残しつつ、普段使いしやすい暗色UIにしています。
 
-## Features
+## 機能
 
 - スレ立てとスレ別レス
-- 新規スレ、レス、リアクションをリアルタイム配信
-- `sage` 書き込み対応
-- アングラ寄りの暗色 BBS UI
-- インストール依存なしで軽量
+- Server-Sent Events によるリアルタイム更新
+- スレ本文・レスへの画像添付
+- `sage` 書き込み
+- Wikipedia の「今日の出来事」を使った時間帯ごとの小ネタ表示
 - Docker / Docker Compose 対応
-- 任意で `COMMUNITY_KEY` による簡易合言葉を設定可能
+- 任意の `COMMUNITY_KEY` による簡易合言葉
 
-## Run Locally
+## ローカル起動
 
 ```bash
 node server.js
 ```
 
-Open http://localhost:3000
+http://localhost:3000 を開いてください。
 
-## Run With Docker
+## Docker 起動
 
 ```bash
 docker compose up --build
 ```
 
-Open http://localhost:3000
+http://localhost:3000 を開いてください。
 
-## Community Key
-
-コミュニティ内部だけで使う場合は、`docker-compose.yml` の `COMMUNITY_KEY` を有効化してください。
+## 設定
 
 ```yaml
 environment:
   PORT: 3000
   THREAD_LIMIT: 80
   COMMENT_LIMIT: 300
+  MAX_IMAGE_BYTES: 1200000
   COMMUNITY_KEY: "your-shared-passphrase"
 ```
 
-初回アクセス時にブラウザが合言葉を聞きます。
-
-## Notes
-
-スレッドとレスはメモリ上に保持されます。小さなコミュニティでサクッと使う用途に向いています。永続化が必要になったら SQLite などを追加するのがおすすめです。
+画像はこの軽量版ではメモリ上に data URL として保持します。長期運用する場合は SQLite とアップロード用ディレクトリなどの永続化を追加してください。

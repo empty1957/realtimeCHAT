@@ -7,6 +7,7 @@ services:
       PORT: 3000
       THREAD_LIMIT: 80
       COMMENT_LIMIT: 300
+      MAX_IMAGE_BYTES: 1200000
       # Set this when you want a simple shared passphrase for your community.
       # COMMUNITY_KEY: "change-me"
     restart: unless-stopped
