@@ -3,29 +3,44 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Underground Thread Board</title>
-    <link rel="stylesheet" href="/styles.css">
+    <title>深夜掲示板</title>
+    <link rel="stylesheet" href="/styles.css?v=20260621-ja-signal">
   </head>
   <body>
-    <main class="board-shell">
-      <header class="masthead">
-        <div>
-          <p class="eyebrow">closed community / realtime bbs</p>
-          <h1>地下板</h1>
+    <main class="app-shell">
+      <header class="topbar">
+        <div class="brand-block">
+          <span class="brand-mark"></span>
+          <div>
+            <p class="eyebrow">コミュニティ内リアルタイム掲示板</p>
+            <h1>深夜掲示板</h1>
+          </div>
         </div>
+        <aside class="signal-card" id="signalCard">
+          <div>
+            <span class="signal-label" id="signalLabel">今日の出来事</span>
+            <strong id="signalName">読み込み中</strong>
+            <p id="signalText">時間帯ごとに小ネタが変わります。</p>
+          </div>
+        </aside>
         <div class="status" id="connectionStatus">
           <span class="status-dot"></span>
-          Connecting
+          接続中
         </div>
       </header>
 
       <section class="thread-starter" aria-label="スレ立て">
         <form id="threadForm">
           <input id="threadTitle" maxlength="80" placeholder="スレタイ">
-          <input id="threadAuthor" maxlength="32" placeholder="名前（省略可）">
-          <textarea id="threadBody" maxlength="1200" rows="2" placeholder=">>1 本文（省略可）"></textarea>
+          <input id="threadAuthor" maxlength="32" placeholder="名前">
+          <textarea id="threadBody" maxlength="1200" rows="2" placeholder="最初の投稿"></textarea>
+          <label class="file-pill">
+            <input id="threadImage" type="file" accept="image/png,image/jpeg,image/gif,image/webp">
+            画像
+          </label>
           <button type="submit">スレ立て</button>
         </form>
+        <div class="upload-preview" id="threadImagePreview" hidden></div>
       </section>
 
       <section class="board-layout">
@@ -41,21 +56,26 @@
           <div class="thread-titlebar">
             <div>
               <p id="threadMeta">スレを選択</p>
-              <h2 id="activeThreadTitle">No thread selected</h2>
+              <h2 id="activeThreadTitle">スレが選択されていません</h2>
             </div>
-            <button id="copyThreadLink" type="button">URL</button>
+            <button id="copyThreadLink" type="button">URLコピー</button>
           </div>
 
           <div class="comments" id="comments" aria-live="polite"></div>
 
           <form class="comment-form" id="commentForm">
             <div class="comment-options">
-              <input id="commentAuthor" maxlength="32" placeholder="名無しさん">
+              <input id="commentAuthor" maxlength="32" placeholder="匿名さん">
               <label class="sage-option">
                 <input id="sage" type="checkbox">
                 sage
               </label>
+              <label class="file-pill">
+                <input id="commentImage" type="file" accept="image/png,image/jpeg,image/gif,image/webp">
+                画像
+              </label>
             </div>
+            <div class="upload-preview" id="commentImagePreview" hidden></div>
             <textarea id="commentBody" maxlength="1200" rows="4" placeholder="レスを書く"></textarea>
             <div class="form-footer">
               <span id="helperText">スレを選ぶと書き込めます。</span>
@@ -65,6 +85,6 @@
         </section>
       </section>
     </main>
-    <script src="/app.js" defer></script>
+    <script src="/app.js?v=20260621-ja-signal" defer></script>
   </body>
 </html>
