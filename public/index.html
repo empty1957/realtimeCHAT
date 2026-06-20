@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Underground Thread Board</title>
+    <link rel="stylesheet" href="/styles.css">
+  </head>
+  <body>
+    <main class="board-shell">
+      <header class="masthead">
+        <div>
+          <p class="eyebrow">closed community / realtime bbs</p>
+          <h1>地下板</h1>
+        </div>
+        <div class="status" id="connectionStatus">
+          <span class="status-dot"></span>
+          Connecting
+        </div>
+      </header>
+
+      <section class="thread-starter" aria-label="スレ立て">
+        <form id="threadForm">
+          <input id="threadTitle" maxlength="80" placeholder="スレタイ">
+          <input id="threadAuthor" maxlength="32" placeholder="名前（省略可）">
+          <textarea id="threadBody" maxlength="1200" rows="2" placeholder=">>1 本文（省略可）"></textarea>
+          <button type="submit">スレ立て</button>
+        </form>
+      </section>
+
+      <section class="board-layout">
+        <aside class="thread-list-panel" aria-label="スレッド一覧">
+          <div class="panel-heading">
+            <span>スレ一覧</span>
+            <strong id="threadCount">0</strong>
+          </div>
+          <div class="thread-list" id="threadList"></div>
+        </aside>
+
+        <section class="thread-view" aria-label="レス">
+          <div class="thread-titlebar">
+            <div>
+              <p id="threadMeta">スレを選択</p>
+              <h2 id="activeThreadTitle">No thread selected</h2>
+            </div>
+            <button id="copyThreadLink" type="button">URL</button>
+          </div>
+
+          <div class="comments" id="comments" aria-live="polite"></div>
+
+          <form class="comment-form" id="commentForm">
+            <div class="comment-options">
+              <input id="commentAuthor" maxlength="32" placeholder="名無しさん">
+              <label class="sage-option">
+                <input id="sage" type="checkbox">
+                sage
+              </label>
+            </div>
+            <textarea id="commentBody" maxlength="1200" rows="4" placeholder="レスを書く"></textarea>
+            <div class="form-footer">
+              <span id="helperText">スレを選ぶと書き込めます。</span>
+              <button type="submit">書き込む</button>
+            </div>
+          </form>
+        </section>
+      </section>
+    </main>
+    <script src="/app.js" defer></script>
+  </body>
+</html>

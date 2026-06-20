@@ -1,0 +1,12 @@
+services:
+  chat:
+    build: .
+    ports:
+      - "3000:3000"
+    environment:
+      PORT: 3000
+      THREAD_LIMIT: 80
+      COMMENT_LIMIT: 300
+      # Set this when you want a simple shared passphrase for your community.
+      # COMMUNITY_KEY: "change-me"
+    restart: unless-stopped

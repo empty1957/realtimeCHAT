@@ -1,0 +1,13 @@
+{
+  "name": "realtime-community-chat",
+  "version": "1.0.0",
+  "description": "A lightweight realtime thread board for small communities.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "license": "MIT"
+}
