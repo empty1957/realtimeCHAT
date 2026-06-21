@@ -5,6 +5,7 @@ ENV NODE_ENV=production
 
 COPY package.json ./
 COPY server.js ./
+COPY server ./server
 COPY public ./public
 
 EXPOSE 3000

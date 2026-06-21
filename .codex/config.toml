@@ -1,0 +1,27 @@
+# .codex/config.toml
+# このリポジトリ専用の Codex 設定。
+# プロジェクトが trusted として扱われている場合に読み込まれる。
+
+# アプリ開発向けの安全寄りデフォルト。
+# - workspace 内の読み書きを許可する。
+# - マシン全体への無制限アクセスは与えない。
+sandbox_mode = "workspace-write"
+
+# 通常の開発向け。
+# - workspace 内の標準的な作業は進められる。
+# - 権限昇格が必要な操作では確認を求める。
+approval_policy = "on-request"
+
+# workspace-write sandbox 内では、ネットワークアクセスをデフォルト無効にする。
+# パッケージインストールや外部通信が必要な場合は、都度確認する。
+[sandbox_workspace_write]
+network_access = false
+
+# 必要に応じて、利用可能なモデル名を確認してから有効化する。
+# model = "gpt-5.5"
+# model_reasoning_effort = "medium"
+# model_verbosity = "medium"
+
+# 既存プロジェクトで他の指示ファイルを使っている場合の fallback。
+project_doc_fallback_filenames = ["CLAUDE.md", ".cursorrules", "TEAM_GUIDE.md"]
+project_doc_max_bytes = 65536
